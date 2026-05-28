@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "author": "Gustavo Gonçalves dos Santos Neves",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 60,
+      "left": 120,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -30,
+      "left": -220,
+      "attrs": { "label": "LDR - Sensor de Luminosidade" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 80,
+      "left": -220,
+      "attrs": { "value": "10000", "label": "10kΩ Pull-down" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": 200,
+      "left": -200,
+      "attrs": { "label": "Módulo Relé 5V" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 350,
+      "left": -140,
+      "attrs": { "color": "yellow", "label": "Lâmpada (LED amarelo)" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 400,
+      "left": -141.6,
+      "attrs": { "value": "220", "label": "220Ω limitador" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "ldr1:VCC", "esp:3V3", "red", [] ],
+    [ "ldr1:AO",  "esp:34", "green", [ "h80", "v40" ] ],
+
+    [ "r1:1", "esp:34",   "green", [ "v10", "h280" ] ],
+    [ "r1:2", "esp:GND.1","black", [ "v-5", "h190", "v100" ] ],
+
+    [ "relay1:VCC", "esp:5V",   "red",   [ "h-10", "v-30", "h330", "v90" ] ],
+    [ "relay1:GND", "esp:GND.2","black", [ "v-5",  "h350", "v-120" ] ],
+    [ "relay1:IN",  "esp:23",   "blue",  [ "v20",  "h360", "v-160" ] ],
+
+    [ "relay1:COM", "esp:5V", "red",   [ "v5", "h120", "v40" ] ],
+    [ "relay1:NO",  "led1:A", "green", [ "h-15", "v110" ] ],
+
+    [ "led1:C",  "r2:1",     "black", [] ],
+    [ "r2:2",    "esp:GND.3","black", [ "h260", "v-210" ] ]
+  ],
+  "dependencies": {}
+}
