@@ -192,7 +192,7 @@ Medições realizadas no ambiente Wokwi com broker HiveMQ público:
 
 ## 🔗 Links
 
-- 🎬 **Vídeo-demonstração:** [YouTube](https://www.youtube.com/watch?v=LINK_DO_VIDEO)
+- 🎬 **Vídeo-demonstração:** [YouTube](https://youtu.be/0lvL_WsK8Uw)
 
 ---
 
